@@ -1,18 +1,21 @@
 # scientist.js
-:microscope: A JavaScript interpretation of the Ruby library Scientist, a library for carefully refactoring critical paths.
+:microscope: A JavaScript interpretation of the Ruby library [Scientist](https://github.com/github/scientist), a library for carefully refactoring critical paths.
+
+[![Build Status](https://travis-ci.org/ziyasal/scientist.js.svg?branch=master)](https://travis-ci.org/ziyasal/scientist.js) [![Coverage Status](https://coveralls.io/repos/github/ziyasal/scientist.js/badge.svg?branch=master)](https://coveralls.io/github/ziyasal/scientist.js?branch=master)
 
 How do I science?
 ========================
 
-Let's pretend you're changing the way you handle permissions in a large web app. Tests can help guide your refactoring, but you really want to capture the current and refactored beahviours under load.
+Let's pretend you're changing the way you handle permissions in a large web app. Tests can help guide your refactoring, but you really want to capture the current and refactored behaviours under load.
 
+**ES6 Sample**
 ```js
 import {Experiment, Result} from 'scientist.js';
 
 import Permission from './permission';
 import Model from './model';
 
-export default class MyWidget {
+class MyWidget {
     constructor() {
         this.model = new Model();
     }
@@ -26,7 +29,7 @@ export default class MyWidget {
     }
 }
 ```
-Use `use(..)` to wrap the existing original behaviour, and use `try(..)` to wrap the new behaviour. `experiment.run();` will always return the result of the Use block, but it does a bunch of stuff behind the scenes:
+Use `use(..)` to wrap the existing original behaviour, and use `try(..)` to wrap the new behaviour. `experiment.run();` will always return the result of the `use` block, but it does a bunch of stuff behind the scenes:
 
 - It decides whether or not to run the `try` block
 - Randomises order to execute `try` and `use` blocks
